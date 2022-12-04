@@ -97,7 +97,7 @@ Based on [this](https://setuptools.readthedocs.io/en/latest/setuptools.html#dist
 6. Publish to pypi:
 
 ```
-pip3 install --upgrade setuptools wheel twine
+python3 -m pip install --upgrade setuptools wheel twine
 
 rm -rf dist build
 python3 setup.py sdist bdist_wheel

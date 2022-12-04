@@ -494,7 +494,7 @@ def cmd_update(gitdir) -> bool:
 
     columns = get_terminal_size().columns
 
-    def print_line(s):
+    def print_line(s: str) -> None:
         print(s[:columns])
 
     update_git_revbranches(git, new_rev_branch)
@@ -549,7 +549,7 @@ def parse_commit_or_exit(git: Repo, revspec: str) -> bytes:
         raise SystemExit(1)
 
 
-def cmd_get(gitdir, revspec):
+def cmd_get(gitdir: Path, revspec: str):
     git = Repo(gitdir)
     rev = parse_commit_or_exit(git, revspec)
     branch = get_git_revbranch(git, rev)
@@ -559,7 +559,7 @@ def cmd_get(gitdir, revspec):
     print(branch.decode('ascii'))
 
 
-def cmd_set(gitdir, revspec, branch, is_force):
+def cmd_set(gitdir: Path, revspec: str, branch: str, is_force: bool):
     if not is_force:
         git = Repo(gitdir)
         rev = parse_commit_or_exit(git, revspec)
@@ -625,7 +625,7 @@ def get_merge_regex(gitdir: str) -> Optional[bytes]:
         return None
 
 
-def main():
+def main() -> int:
     from argparse import ArgumentParser, RawDescriptionHelpFormatter
 
     # noinspection PyTypeChecker
