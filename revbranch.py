@@ -588,7 +588,7 @@ def cmd_fetch(gitdir: str, remote: str):
         check_call(['git', '-C', gitdir, 'fetch', remote, f'{NOTES_REF_S}:{NOTES_REF_S}'])
     # This one serves like the remote tracking branch, except that we
     # have to handle the tracking ourselves.
-    check_call(['git', '-C', gitdir, 'fetch', remote, f'{NOTES_REF_S}:{remote_notes}'])
+    check_call(['git', '-C', gitdir, 'fetch', '-f', remote, f'{NOTES_REF_S}:{remote_notes}'])
 
 
 def cmd_merge(gitdir: str, remote: str):
